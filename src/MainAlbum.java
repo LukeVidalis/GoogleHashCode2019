@@ -19,14 +19,11 @@ public class MainAlbum {
 		data = fr.getFileData();
 		setupPhotos(data);
 		PairingAlgorithm pa = new PairingAlgorithm(verticalPhotos);
-<<<<<<< HEAD
-		for(Slide s:pa.getSlides()) {
+		for(Slide s : pa.getSlides()) {
 			slides.add(s);
 		}
 		SlideShow ss = new SlideShow(slides);
-=======
-
->>>>>>> origin/master
+		Output o = new Output(ss.getBestSlideShow());
 	}
 
 	private void setupPhotos(ArrayList<String> list) {
