@@ -86,7 +86,7 @@ public class SlideShow {
 
 	private void createSlideShow() {
 		int size = slides.size();
-		while (finalSlides.size() < size) {
+		while (slides.size() > 100) {
 			System.out.println(slides.size());
 			addNext();
 		}
@@ -96,27 +96,32 @@ public class SlideShow {
 		Slide next = slides.get(0);
 		int score = 0;
 		boolean endPosition = true;
-		for(int i=0;i<slides.size();i++){
-			InterestFactor if1 = new InterestFactor(slides.get(i), finalSlides.get(0));
-			InterestFactor if2 = new InterestFactor(slides.get(i), finalSlides.get(finalSlides.size()-1));
-			if (if1.getInterestFactor() >= score) {
-				score = if1.getInterestFactor();
-				next = slides.get(i);
-				endPosition = false;
+		for(int i=0;i<100;i++){
+			if(!finalSlides.contains(slides.get(i))) {
+				InterestFactor if1 = new InterestFactor(slides.get(i), finalSlides.get(0));
+				InterestFactor if2 = new InterestFactor(slides.get(i), finalSlides.get(finalSlides.size()-1));
+				if (if1.getInterestFactor() >= score) {
+					score = if1.getInterestFactor();
+					next = slides.get(i);
+					endPosition = false;
+				}
+				if (if2.getInterestFactor() >= score) {
+					score = if2.getInterestFactor();
+					next = slides.get(i);
+					endPosition = true;
+				}
 			}
-			if (if2.getInterestFactor() >= score) {
-				score = if2.getInterestFactor();
-				next = slides.get(i);
-				endPosition = true;
-			}
-			i++;
 		}
 		if (endPosition) {
-			finalSlides.add(next);
-			slides.remove(next);
+			if(!finalSlides.contains(next)){
+				finalSlides.add(next);
+				slides.remove(next);
+			}
 		} else {
-			finalSlides.add(0, next);
-			slides.remove(next);
+			if(!finalSlides.contains(next)){
+				finalSlides.add(0, next);
+				slides.remove(next);
+			}
 		}
 	}
 
