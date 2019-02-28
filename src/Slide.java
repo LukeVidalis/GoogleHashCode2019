@@ -21,6 +21,14 @@ public class Slide {
 		}
 	}
 
+	public ArrayList<Photo> getPhotos() {
+		return photos;
+	}
+
+	public ArrayList<String> getTags() {
+		return tags;
+	}
+
 	public String toString() {
 		String s = "";
 		for (int i = 0; i < photos.size(); i++) {
