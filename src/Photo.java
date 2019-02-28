@@ -8,7 +8,7 @@ public class Photo {
     private String photoID;
     private String orientation;
     private int numOfTags;
-    private ArrayList<String> tags;
+    private ArrayList<String> tags = new ArrayList<String>();
     
     public Photo(String photoInformation){
         setInformation(photoInformation);
