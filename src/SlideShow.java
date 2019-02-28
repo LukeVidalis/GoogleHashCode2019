@@ -6,9 +6,10 @@ public class SlideShow {
 	private ArrayList<Slide> slides;
 	private ArrayList<Slide> finalSlides = new ArrayList<>();
 	private InterestFactor interestFactor;
-	private ArrayList<Slide> bestSlideShow;
+	private ArrayList<Slide> bestSlideShow = new ArrayList<>();
 
 	public SlideShow(ArrayList<Slide> slides) {
+		System.out.println("Creating slideshow...");
 		this.slides = slides;
 		Slide currentSlide = slides.get(0);
 		Slide newSlide;
@@ -16,17 +17,19 @@ public class SlideShow {
 		finalSlides.add(slides.get(0));
 		createSlideShow();
 		bestSlideShow.addAll(finalSlides);
+		System.out.println("Creating slideshow 1");
 		int score = calcScore(bestSlideShow);
-		for (int i = 1; i < slides.size(); i++) {
-			finalSlides.clear();
-			finalSlides.add(slides.get(i));
-			createSlideShow();
-			if (calcScore(finalSlides) > score) {
-				bestSlideShow.clear();
-				bestSlideShow.addAll(finalSlides);
-				score = calcScore(bestSlideShow);
-			};
-		}
+		// for (int i = 1; i < slides.size(); i++) {
+		// System.out.println("Creating slideshow " + i+1);
+		// finalSlides.clear();
+		// finalSlides.add(slides.get(i));
+		// createSlideShow();
+		// if (calcScore(finalSlides) > score) {
+		// bestSlideShow.clear();
+		// bestSlideShow.addAll(finalSlides);
+		// score = calcScore(bestSlideShow);
+		// };
+		// }
 	}
 
 	public void addPhoto(Photo photo) {
@@ -82,7 +85,9 @@ public class SlideShow {
 	// }
 
 	private void createSlideShow() {
-		while (finalSlides.size() < slides.size()) {
+		int size = slides.size();
+		while (finalSlides.size() < size) {
+			System.out.println(slides.size());
 			addNext();
 		}
 	}
@@ -91,26 +96,27 @@ public class SlideShow {
 		Slide next = slides.get(0);
 		int score = 0;
 		boolean endPosition = true;
-		for (int i = 0; i < slides.size(); i++) {
-			if (!finalSlides.contains(slides.get(i))) {
-				InterestFactor if1 = new InterestFactor(slides.get(i), finalSlides.get(0));
-				InterestFactor if2 = new InterestFactor(slides.get(i), finalSlides.get(finalSlides.size() - 1));
-				if (if1.getInterestFactor() > score) {
-					score = if1.getInterestFactor();
-					next = slides.get(i);
-					endPosition = false;
-				}
-				if (if2.getInterestFactor() > score) {
-					score = if2.getInterestFactor();
-					next = slides.get(i);
-					endPosition = true;
-				}
+		for(int i=0;i<slides.size();i++){
+			InterestFactor if1 = new InterestFactor(slides.get(i), finalSlides.get(0));
+			InterestFactor if2 = new InterestFactor(slides.get(i), finalSlides.get(finalSlides.size()-1));
+			if (if1.getInterestFactor() >= score) {
+				score = if1.getInterestFactor();
+				next = slides.get(i);
+				endPosition = false;
 			}
+			if (if2.getInterestFactor() >= score) {
+				score = if2.getInterestFactor();
+				next = slides.get(i);
+				endPosition = true;
+			}
+			i++;
 		}
 		if (endPosition) {
 			finalSlides.add(next);
+			slides.remove(next);
 		} else {
 			finalSlides.add(0, next);
+			slides.remove(next);
 		}
 	}
 
@@ -126,7 +132,5 @@ public class SlideShow {
 	public ArrayList<Slide> getBestSlideShow() {
 		return bestSlideShow;
 	}
-	
-	
 
 }

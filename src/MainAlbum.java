@@ -15,7 +15,7 @@ public class MainAlbum {
 		verticalPhotos = new ArrayList<Photo>();
 		horizontalPhotos = new ArrayList<Photo>();
 
-		fr = new fileReader(2);
+		fr = new fileReader(1);
 		data = fr.getFileData();
 		setupPhotos(data);
 		PairingAlgorithm pa = new PairingAlgorithm(verticalPhotos);
