@@ -20,7 +20,7 @@ public class Slide {
 			if(i>0) {
 				s=s+" ";
 			}
-			s=s+photos.get(i).getID();
+			s=s+photos.get(i).getPhotoID();
 		}
 		return s;
 	}
