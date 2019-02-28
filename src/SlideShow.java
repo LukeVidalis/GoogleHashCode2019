@@ -12,6 +12,20 @@ public class SlideShow {
 	
 	public SlideShow(ArrayList<Slide> slides) {
 		this.slides = slides;
+<<<<<<< HEAD
+=======
+	}
+	
+	
+	public void addPhoto(Photo photo) {
+		
+	}
+	
+	private void createSlideShow() {
+		Slide currentSlide = slides.get(0);
+		Slide newSlide;
+		int currentInterestFactor = 0;
+>>>>>>> origin/master
 		finalSlides.add(slides.get(0));
 		createSlideShow();
 		bestSlideShow.addAll(finalSlides);
@@ -83,6 +97,7 @@ public class SlideShow {
 		}
 	}
 	
+<<<<<<< HEAD
 	private void addNext() {
 		Slide next = new Slide(new ArrayList<Photo>());
 		int score = 0;
@@ -100,6 +115,17 @@ public class SlideShow {
 					score = if2.getInterestFactor();
 					next = slides.get(i);
 					endPosition = true;
+=======
+	private Slide getBestSlide(Slide a, Slide b) {
+		Slide newSlide = null;
+		int currentInterestFactor = 0;		
+		for(Slide s : slides) {
+			if(!finalSlides.contains(s)) {
+				interestFactor = new InterestFactor(current, s);
+				if(interestFactor.getInterestFactor() > currentInterestFactor) {
+					newSlide = s;
+					currentInterestFactor = interestFactor.getInterestFactor();
+>>>>>>> origin/master
 				}
 			}
 		}
