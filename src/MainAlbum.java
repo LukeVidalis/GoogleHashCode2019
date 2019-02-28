@@ -18,11 +18,11 @@ public class MainAlbum {
 		fr = new fileReader(2);
 		data = fr.getFileData();
 		setupPhotos(data);
-<<<<<<< HEAD:src/main.java
 		PairingAlgorithm pa = new PairingAlgorithm(verticalPhotos);
-=======
-		
->>>>>>> origin/master:src/MainAlbum.java
+		for(Slide s:pa.getSlides()) {
+			slides.add(s);
+		}
+		SlideShow ss = new SlideShow(slides);
 	}
 
 	private void setupPhotos(ArrayList<String> list) {
@@ -33,7 +33,9 @@ public class MainAlbum {
 			if(p.getOrientation().equals("V")) {
 				verticalPhotos.add(p);
 			}else if(p.getOrientation().equals("H")) {
-				horizontalPhotos.add(p);
+				ArrayList<Photo> a = new ArrayList<Photo>();
+				a.add(p);
+				slides.add(new Slide(a));
 			}else {
 				System.out.println("Error: Wrong Orientation");
 			}

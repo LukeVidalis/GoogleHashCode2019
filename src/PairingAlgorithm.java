@@ -45,7 +45,9 @@ public class PairingAlgorithm {
 		photos.remove(result);
 		return result;
 	}
-	
-	
+
+	public ArrayList<Slide> getSlides() {
+		return slides;
+	}
 
 }
