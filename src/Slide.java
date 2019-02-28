@@ -2,8 +2,21 @@ import java.util.ArrayList;
 
 
 public class Slide {
+	
 	private ArrayList<Photo> photos = new ArrayList<Photo>();
 	private ArrayList<String> tags = new ArrayList<String>();
+	
+	public Slide left = null;
+	public Slide right = null;
+	
+	public Slide getLeftSlide() {
+		return left;
+	}
+	
+	public Slide getRightSlide() {
+		return right;
+	}	
+	
 
 	public Slide(ArrayList<Photo> photos) {
 		this.photos = photos;
