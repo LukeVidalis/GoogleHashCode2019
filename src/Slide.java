@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Slide {
 	private ArrayList<Photo> photos = new ArrayList<Photo>();
 	private ArrayList<String> tags = new ArrayList<String>();
@@ -15,10 +16,39 @@ public class Slide {
 		} else {
 			ArrayList<String> tagsA= photos.get(0).getTags();
 			ArrayList<String> tagsB= photos.get(1).getTags();
-			ArrayList<String> commonTags = new ArrayList<String>(tagsA);
-			commonTags.retainAll(tagsB);
-			tags=commonTags;
+			tags = new ArrayList<String>(tagsA);
+			tags.addAll(tagsB);
+			tags=removeDuplicates(tags);
 		}
+	}
+
+	public ArrayList<String> removeDuplicates(ArrayList<String> list) 
+    { 
+  
+        // Create a new ArrayList 
+        ArrayList<String> newList = new ArrayList<String>(); 
+  
+        // Traverse through the first list 
+        for (String element : list) { 
+  
+            // If this element is not present in newList 
+            // then add it 
+            if (!newList.contains(element)) { 
+  
+                newList.add(element); 
+            } 
+        } 
+  
+        // return the new list 
+        return newList; 
+    } 
+	
+	public ArrayList<Photo> getPhotos() {
+		return photos;
+	}
+
+	public ArrayList<String> getTags() {
+		return tags;
 	}
 
 	public String toString() {
