@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class main {
+public class MainAlbum {
 	private ArrayList<Slide> slides;
 	private ArrayList<Photo> verticalPhotos;
 	private ArrayList<Photo> horizontalPhotos;
@@ -10,13 +10,15 @@ public class main {
 
 	private fileReader fr;
 
-	public main() throws IOException {
+	public MainAlbum() throws IOException {
 		slides = new ArrayList<Slide>();
 		verticalPhotos = new ArrayList<Photo>();
+		horizontalPhotos = new ArrayList<Photo>();
 
 		fr = new fileReader(0);
 		data = fr.getFileData();
 		setupPhotos(data);
+		
 	}
 
 	private void setupPhotos(ArrayList<String> list) {
@@ -28,14 +30,14 @@ public class main {
 			}else if(p.getOrientation().equals("H")) {
 				horizontalPhotos.add(p);
 			}else {
-				System.out.println("Error: Wrong orientation");
+				System.out.println("Error: Wrong Orientation");
 			}
 		}
 
 	}
 
 	public static void main(String[] args) throws IOException {
-		new main();
+		new MainAlbum();
 	}
 
 }
