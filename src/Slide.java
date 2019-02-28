@@ -2,18 +2,20 @@ import java.util.ArrayList;
 
 public class Slide {
 	private ArrayList<Photo> photos = new ArrayList<Photo>();
+	private ArrayList<String> tags = new ArrayList<String>();
+	
 
-	public ArrayList<Photo> getPhotos() {
-		return photos;
-	}
-
-	public void setPhotos(ArrayList<Photo> photos) {
+	public Slide(ArrayList<Photo> photos) {
 		this.photos = photos;
+		setupTags();
+	}
+	
+	private void setupTags() {
+		if(photos.size()==1) {
+			
+		}
 	}
 
-	public Slide() {
-
-	}
 	public String toString() {
 		String s="";
 		for(int i=0;i<photos.size();i++) {
@@ -24,4 +26,5 @@ public class Slide {
 		}
 		return s;
 	}
+	
 }
