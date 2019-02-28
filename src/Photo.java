@@ -9,20 +9,19 @@ public class Photo {
     private String orientation;
     private int numOfTags;
     private ArrayList<String> tags;
-    private ArrayList<String> photoInformation;
     
-    public Photo(ArrayList<String> photoInformation){
-        this.photoInformation = photoInformation;
-        setInformation();
+    public Photo(String photoInformation){
+        setInformation(photoInformation);
     }
     
     
-    private void setInformation(){
-        photoID = photoInformation.get(0);
-        orientation = photoInformation.get(1);
-        numOfTags = Integer.parseInt(photoInformation.get(2));
-        for(int i = 3; i < photoInformation.size(); i++){
-            tags.add(photoInformation.get(i));
+    private void setInformation(String photoInformation){
+    	String[] info = photoInformation.split(" ");
+        photoID = info[0];
+        orientation = info[1];
+        numOfTags = Integer.parseInt(info[2]);
+        for(int i = 3; i < info.length; i++){
+            tags.add(info[i]);
         }
     }
        
