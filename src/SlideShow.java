@@ -15,7 +15,7 @@ public class SlideShow {
 	
 	
 	public void addPhoto(Photo photo) {
-		photos.add(photo);
+		
 	}
 	
 	private void createSlideShow() {
@@ -48,7 +48,7 @@ public class SlideShow {
 	}
 	
 	private Slide getBestSlide(Slide a, Slide b) {
-		Slide newSlide;
+		Slide newSlide = null;
 		int currentInterestFactor = 0;		
 		for(Slide s : slides) {
 			if(!finalSlides.contains(s)) {

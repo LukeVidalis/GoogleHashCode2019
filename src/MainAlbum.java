@@ -18,11 +18,8 @@ public class MainAlbum {
 		fr = new fileReader(2);
 		data = fr.getFileData();
 		setupPhotos(data);
-<<<<<<< HEAD:src/main.java
 		PairingAlgorithm pa = new PairingAlgorithm(verticalPhotos);
-=======
-		
->>>>>>> origin/master:src/MainAlbum.java
+
 	}
 
 	private void setupPhotos(ArrayList<String> list) {
